@@ -26,17 +26,20 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!--needed by actuator-->
+        <!--needed by actuator to show all the actuator endpoints-->
         <dependency>
             <groupId>org.springframework.hateoas</groupId>
             <artifactId>spring-hateoas</artifactId>
             <version>0.19.0.RELEASE</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.projectlombok</groupId>
