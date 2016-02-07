@@ -59,8 +59,6 @@ public class CustomErrorController implements ErrorController {
         public String error;
         public String message;
         public String timeStamp;
-        public String details;
-        public String localizedDetails;
         public String trace;
 
         public ErrorJson(int status, Map<String, Object> errorAttributes) {
@@ -68,8 +66,6 @@ public class CustomErrorController implements ErrorController {
             this.error = (String) errorAttributes.get("error");
             this.message = (String) errorAttributes.get("message");
             this.timeStamp = errorAttributes.get("timestamp").toString();
-            this.details = errorAttributes.get("details").toString();
-            this.localizedDetails = errorAttributes.get("localizedDetails").toString();
             this.trace = (String) errorAttributes.get("trace");
         }
 
