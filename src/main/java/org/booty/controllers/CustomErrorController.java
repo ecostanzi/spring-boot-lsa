@@ -31,7 +31,7 @@ public class CustomErrorController implements ErrorController {
     ErrorJson error(HttpServletRequest request, HttpServletResponse response) {
         // Appropriate HTTP response code (e.g. 404 or 500) is automatically set by Spring.
         // Here we just define response body.
-        return new ErrorJson(response.getStatus(), getErrorAttributes(request, debug));
+        return new ErrorJson(response.getStatus(),  getErrorAttributes(request, debug));
     }
 
     @Override
@@ -41,7 +41,14 @@ public class CustomErrorController implements ErrorController {
 
     private Map<String, Object> getErrorAttributes(HttpServletRequest request, boolean includeStackTrace) {
         RequestAttributes requestAttributes = new ServletRequestAttributes(request);
-        return errorAttributes.getErrorAttributes(requestAttributes, includeStackTrace);
+        Throwable error = errorAttributes.getError(requestAttributes);
+        String detail = error.getMessage();
+        String localizedDetails= error.getLocalizedMessage();
+
+        Map<String, Object> exceptionDetails = this.errorAttributes.getErrorAttributes(requestAttributes, includeStackTrace);
+        exceptionDetails.put("details", detail);
+        exceptionDetails.put("localizedDetails", localizedDetails);
+        return exceptionDetails;
     }
 
     private static class ErrorJson {
@@ -50,6 +57,8 @@ public class CustomErrorController implements ErrorController {
         public String error;
         public String message;
         public String timeStamp;
+        public String details;
+        public String localizedDetails;
         public String trace;
 
         public ErrorJson(int status, Map<String, Object> errorAttributes) {
@@ -57,6 +66,8 @@ public class CustomErrorController implements ErrorController {
             this.error = (String) errorAttributes.get("error");
             this.message = (String) errorAttributes.get("message");
             this.timeStamp = errorAttributes.get("timestamp").toString();
+            this.details = errorAttributes.get("details").toString();
+            this.localizedDetails = errorAttributes.get("localizedDetails").toString();
             this.trace = (String) errorAttributes.get("trace");
         }
 

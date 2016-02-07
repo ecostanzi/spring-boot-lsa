@@ -1,4 +1,4 @@
-package org.booty;
+package org.booty.exceptions;
 
 /**
  * @author Enrico Costanzi
