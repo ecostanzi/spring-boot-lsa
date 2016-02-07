@@ -1,4 +1,4 @@
-# lsa
+# LSA
 Spring Boot in a Lazy Sunday Afternoon 
 
 Trying some of the spring boot features:
