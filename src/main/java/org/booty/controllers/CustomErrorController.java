@@ -41,13 +41,15 @@ public class CustomErrorController implements ErrorController {
 
     private Map<String, Object> getErrorAttributes(HttpServletRequest request, boolean includeStackTrace) {
         RequestAttributes requestAttributes = new ServletRequestAttributes(request);
-        Throwable error = errorAttributes.getError(requestAttributes);
-        String detail = error.getMessage();
-        String localizedDetails= error.getLocalizedMessage();
-
         Map<String, Object> exceptionDetails = this.errorAttributes.getErrorAttributes(requestAttributes, includeStackTrace);
-        exceptionDetails.put("details", detail);
-        exceptionDetails.put("localizedDetails", localizedDetails);
+        Throwable error = errorAttributes.getError(requestAttributes);
+        if(error != null){
+            String detail = error.getMessage();
+            String localizedDetails= error.getLocalizedMessage();
+            exceptionDetails.put("details", detail);
+            exceptionDetails.put("localizedDetails", localizedDetails);
+        }
+
         return exceptionDetails;
     }
 
