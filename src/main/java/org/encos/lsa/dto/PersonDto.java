@@ -1,4 +1,4 @@
-package org.booty.dto;
+package org.encos.lsa.dto;
 
 import lombok.Getter;
 import lombok.Setter;

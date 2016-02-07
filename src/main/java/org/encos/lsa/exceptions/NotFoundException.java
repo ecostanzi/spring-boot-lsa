@@ -1,4 +1,4 @@
-package org.booty.exceptions;
+package org.encos.lsa.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author Enrico Costanzi
  */
 @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such Person")
-public class NotFoundException extends BootyException{
+public class NotFoundException extends LsaException{
     public NotFoundException() {
     }
 

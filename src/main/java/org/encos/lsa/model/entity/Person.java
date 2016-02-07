@@ -1,4 +1,4 @@
-package org.booty.model.entity;
+package org.encos.lsa.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

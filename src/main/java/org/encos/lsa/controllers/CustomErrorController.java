@@ -1,4 +1,4 @@
-package org.booty.controllers;
+package org.encos.lsa.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

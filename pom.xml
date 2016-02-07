@@ -6,7 +6,7 @@
     <packaging>war</packaging>
 
     <groupId>org.encos.gruvi</groupId>
-    <artifactId>booty</artifactId>
+    <artifactId>lsa</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>

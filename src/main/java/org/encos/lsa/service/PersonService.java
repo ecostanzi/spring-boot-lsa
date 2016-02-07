@@ -1,9 +1,9 @@
-package org.booty.service;
+package org.encos.lsa.service;
 
-import org.booty.dto.PersonDto;
-import org.booty.exceptions.NotFoundException;
-import org.booty.model.entity.Person;
-import org.booty.model.repository.PersonRepository;
+import org.encos.lsa.dto.PersonDto;
+import org.encos.lsa.exceptions.NotFoundException;
+import org.encos.lsa.model.entity.Person;
+import org.encos.lsa.model.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package org.booty.model.repository;
+package org.encos.lsa.model.repository;
 
-import org.booty.model.entity.Person;
+import org.encos.lsa.model.entity.Person;
 import org.springframework.data.repository.CrudRepository;
 
 /**

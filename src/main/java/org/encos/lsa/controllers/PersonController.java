@@ -1,9 +1,7 @@
-package org.booty.controllers;
+package org.encos.lsa.controllers;
 
-import org.booty.exceptions.BootyException;
-import org.booty.dto.PersonDto;
-import org.booty.exceptions.NotFoundException;
-import org.booty.service.PersonService;
+import org.encos.lsa.dto.PersonDto;
+import org.encos.lsa.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonController {
 
     private Logger log = LoggerFactory.getLogger(PersonController.class);
-
-//    @RequestMapping("/")
-//    public String greetings() {
-//        log.info("Saying hello to my user!");
-//        return "Greetings from Spring Boot!!";
-//    }
 
     @Autowired
     PersonService personService;

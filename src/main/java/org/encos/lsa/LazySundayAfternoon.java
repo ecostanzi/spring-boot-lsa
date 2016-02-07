@@ -1,24 +1,21 @@
-package org.booty;
+package org.encos.lsa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.ServletContextApplicationContextInitializer;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-
-import javax.servlet.ServletContext;
 
 /**
  * @author Enrico Costanzi
  */
 @SpringBootApplication
-public class Booty extends SpringBootServletInitializer{
+public class LazySundayAfternoon extends SpringBootServletInitializer{
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Booty.class);
+        return application.sources(LazySundayAfternoon.class);
     }
     public static void main(String[] args) {
-        SpringApplication.run(Booty.class, args);
+        SpringApplication.run(LazySundayAfternoon.class, args);
     }
 }
