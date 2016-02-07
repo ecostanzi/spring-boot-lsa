@@ -4,6 +4,8 @@ import org.encos.lsa.dto.PersonDto;
 import org.encos.lsa.exceptions.NotFoundException;
 import org.encos.lsa.model.entity.Person;
 import org.encos.lsa.model.repository.PersonRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PersonService {
+
+    private Logger log = LoggerFactory.getLogger(PersonService.class);
 
     @Autowired
     PersonRepository personRepository;
@@ -22,6 +26,7 @@ public class PersonService {
         Person personEntity = personRepository.findOne(id);
 
         if(personEntity == null){
+            log.warn("Person not found");
             throw new NotFoundException(String.format("Person with id %d not found", id));
         }
 
