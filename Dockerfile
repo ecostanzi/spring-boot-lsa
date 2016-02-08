@@ -1,7 +1,7 @@
 FROM java
 MAINTAINER Enrico Costanzi "enrico.costanzi@gmail.com"
 VOLUME /tmp
-ADD target/lsa.jar /app.jar
-RUN bash -c 'touch /app.jar'
+ADD target/lsa.war /lsa.war
+RUN bash -c 'touch /lsa.war'
 EXPOSE 8081
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/lsa.war"]
