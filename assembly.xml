@@ -1,0 +1,27 @@
+<assembly>
+    <id>install</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <!--
+    see http://www.petrikainulainen.net/programming/tips-and-tricks/creating-a-runnable-binary-distribution-with-maven-assembly-plugin/
+    -->
+
+    <fileSets>
+
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <includes>
+                <include>*.war.original</include>
+            </includes>
+            <outputDirectory>war</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/release</directory>
+            <outputDirectory>data</outputDirectory>
+        </fileSet>
+
+    </fileSets>
+</assembly>

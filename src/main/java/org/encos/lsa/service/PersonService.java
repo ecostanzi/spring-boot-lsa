@@ -7,6 +7,7 @@ import org.encos.lsa.model.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,6 +20,9 @@ public class PersonService {
 
     @Autowired
     PersonRepository personRepository;
+
+    @Value("${lsa.environment.name}")
+    String environment;
 
     public PersonDto getPerson(Long id){
         //todo map using orika or something like that
@@ -36,5 +40,9 @@ public class PersonService {
         personDto.setLastName(personEntity.getLastName());
 
         return personDto;
+    }
+
+    public String env(){
+        return environment;
     }
 }
