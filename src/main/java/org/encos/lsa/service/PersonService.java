@@ -1,7 +1,11 @@
 package org.encos.lsa.service;
 
 import org.encos.lsa.dto.PersonDto;
+import org.encos.lsa.dto.mapper.PersonMapper;
 import org.encos.lsa.exceptions.NotFoundException;
+import org.encos.lsa.model.entity.Address;
+import org.encos.lsa.model.entity.City;
+import org.encos.lsa.model.entity.District;
 import org.encos.lsa.model.entity.Person;
 import org.encos.lsa.model.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -21,11 +25,43 @@ public class PersonService {
     @Autowired
     PersonRepository personRepository;
 
+    @Autowired
+    PersonMapper personMapper;
+
     @Value("${lsa.environment.name}")
     String environment;
 
     public PersonDto getPerson(Long id){
-        //todo map using orika or something like that
+
+        if(id == 0){
+            //fixme use a script to put data into the h2 database
+            log.info("Returing fake person with id {}", 0);
+
+            Person person = new Person();
+            person.setFirstName("Enrico");
+            person.setLastName("Costanzi");
+            person.setId(id);
+
+            City city = new City();
+            city.setId(0L);
+            city.setName("Verona");
+
+            District district = new District();
+            district.setId(5L);
+            district.setName("Veneto");
+
+            Address address = new Address();
+            address.setStreetName("Piazza Bra");
+            address.setStreetNumber("1");
+            address.setZipCode("37100");
+            address.setCity(city);
+            address.setDistrict(district);
+
+            person.setAddress(address);
+
+
+            return personMapper.map(person);
+        }
 
         Person personEntity = personRepository.findOne(id);
 
@@ -34,12 +70,7 @@ public class PersonService {
             throw new NotFoundException(String.format("Person with id %d not found", id));
         }
 
-        PersonDto personDto = new PersonDto();
-        personDto.setId(personEntity.getId());
-        personDto.setFirstName(personEntity.getFirstName());
-        personDto.setLastName(personEntity.getLastName());
-
-        return personDto;
+        return personMapper.map(personEntity);
     }
 
     public String env(){

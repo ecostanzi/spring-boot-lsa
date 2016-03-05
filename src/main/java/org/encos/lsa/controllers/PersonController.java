@@ -25,16 +25,6 @@ public class PersonController {
     @RequestMapping("/person/{id}")
     public PersonDto getPerson(@PathVariable("id") Long id){
         log.info("Getting person with id {}", id);
-        if(id == 0){
-            log.info("Returing fake person with id {}", 0);
-            PersonDto personDto = new PersonDto();
-            personDto.setFirstName("Enrico");
-            personDto.setLastName("Costanzi");
-            personDto.setId(id);
-
-            return personDto;
-        }
-
         return personService.getPerson(id);
 
     }
