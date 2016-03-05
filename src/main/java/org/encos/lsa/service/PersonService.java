@@ -33,9 +33,9 @@ public class PersonService {
 
     public PersonDto getPerson(Long id){
 
-        if(id == 0){
+        if(id % 2 == 0){
             //fixme use a script to put data into the h2 database
-            log.info("Returing fake person with id {}", 0);
+            log.info("Returing fake person with id {}", id);
 
             Person person = new Person();
             person.setFirstName("Enrico");
@@ -60,6 +60,9 @@ public class PersonService {
             person.setAddress(address);
 
 
+            if(id>=10){
+                return personMapper.mapNoAddress(person);
+            }
             return personMapper.map(person);
         }
 

@@ -2,10 +2,7 @@ package org.encos.lsa.dto.mapper;
 
 import org.encos.lsa.dto.AddressDto;
 import org.encos.lsa.model.entity.Address;
-import org.mapstruct.DecoratedWith;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.mapstruct.*;
 
 /**
  * @author Enrico Costanzi

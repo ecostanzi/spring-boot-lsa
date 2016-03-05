@@ -6,7 +6,7 @@ package org.encos.lsa.dto;
 public class PersonDto {
 
     private Long id;
-    private String firstName;
+    private String name;
     private String lastName;
     private AddressDto address;
 
@@ -18,12 +18,12 @@ public class PersonDto {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
