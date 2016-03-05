@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Enrico Costanzi
  */
@@ -13,7 +16,9 @@ public class LazySundayAfternoon extends SpringBootServletInitializer{
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(LazySundayAfternoon.class);
+        Map<String, Object> map = new HashMap<>();
+        map.put("spring.config.location", "classpath:lsa/");
+        return application.properties(map).sources(LazySundayAfternoon.class);
     }
     public static void main(String[] args) {
         SpringApplication.run(LazySundayAfternoon.class, args);

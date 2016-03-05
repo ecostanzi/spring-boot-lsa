@@ -1,0 +1,13 @@
+<jboss-deployment-structure>
+
+
+    <deployment>
+        <exclude-subsystems>
+            <subsystem name="logging" />
+        </exclude-subsystems>
+        <dependencies>
+            <module name="org.encos.lsa.configuration" />
+        </dependencies>
+    </deployment>
+
+</jboss-deployment-structure>
