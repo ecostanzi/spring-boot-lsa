@@ -6,6 +6,7 @@ import javax.persistence.*;
  * @author Enrico Costanzi
  */
 @Entity
+@Table(name = "ADDRESS")
 public class Address {
 
     @Id
@@ -22,11 +23,11 @@ public class Address {
     private String zipCode;
 
     @ManyToOne
-    @JoinColumn(name = "ID_DISTRICT")
+    @JoinColumn(name = "ID_DISTRICT", foreignKey = @ForeignKey(name="fk_address_district"))
     private District district;
 
     @ManyToOne
-    @JoinColumn(name = "ID_CITY")
+    @JoinColumn(name = "ID_CITY", foreignKey = @ForeignKey(name="fk_address_city"))
     private City city;
 
     public Long getId() {

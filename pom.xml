@@ -71,6 +71,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!--needed by actuator to show all the actuator endpoints-->
+        <dependency>
+            <groupId>org.springframework.hateoas</groupId>
+            <artifactId>spring-hateoas</artifactId>
+            <version>0.19.0.RELEASE</version>
+        </dependency>
 
         <!--security-->
         <dependency>
@@ -100,11 +106,10 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--needed by actuator to show all the actuator endpoints-->
         <dependency>
-            <groupId>org.springframework.hateoas</groupId>
-            <artifactId>spring-hateoas</artifactId>
-            <version>0.19.0.RELEASE</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!--<dependency>
@@ -160,6 +165,16 @@
                     </dependency>
                 </dependencies>
             </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skipTests>false</skipTests>
+                        <includes>
+                            <include>**/*Test.java</include>
+                        </includes>
+                        <excludedGroups>org.encos.lsa.test.category.DevTest</excludedGroups>
+                    </configuration>
+                </plugin>
 
         </plugins>
     </build>

@@ -3,12 +3,14 @@ package org.encos.lsa.model.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author Enrico Costanzi
  */
 
 @Entity
+@Table(name = "DISTRICT")
 public class District {
 
     @Id
