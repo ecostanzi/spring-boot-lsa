@@ -1,6 +1,6 @@
 package org.encos.lsa;
 
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
@@ -21,7 +21,10 @@ public class LazySundayAfternoon extends SpringBootServletInitializer {
         Map<String, Object> map = new HashMap<>();
         map.put("spring.config.location", "classpath:" + APP_NAME + "/");
         map.put("spring.config.name", APP_NAME);
-        return application.properties(map).sources(LazySundayAfternoon.class);
+        return application
+                .properties(map)
+                .bannerMode(Banner.Mode.OFF)
+                .sources(LazySundayAfternoon.class);
     }
     public static void main(String[] args) {
         Map<String, Object> map = new HashMap<>();
@@ -29,6 +32,7 @@ public class LazySundayAfternoon extends SpringBootServletInitializer {
         new SpringApplicationBuilder().
                 sources(LazySundayAfternoon.class)
                 .properties(map)
+                .bannerMode(Banner.Mode.OFF)
                 .run(args);
     }
 }

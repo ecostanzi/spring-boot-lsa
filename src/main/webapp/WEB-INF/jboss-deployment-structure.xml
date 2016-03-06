@@ -3,7 +3,8 @@
 
     <deployment>
         <exclude-subsystems>
-            <subsystem name="logging" />
+            <!--<subsystem name="logging" />-->
+            <!--<subsystem name="jpa"/>-->
         </exclude-subsystems>
         <dependencies>
             <module name="org.encos.lsa.configuration" />
