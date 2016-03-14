@@ -1,5 +1,6 @@
 package org.encos.lsa.model.entity;
 
+import org.encos.lsa.config.StaticConfig;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -7,7 +8,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="PERSON", indexes = {
+@Table(name="PERSON",
+        schema = StaticConfig.DB_SCHEMA,
+        indexes = {
         @Index(columnList = "USERNAME", name = "PERSON_USERNAME_IDX")
 })
 public class Person {

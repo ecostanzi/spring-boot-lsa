@@ -18,6 +18,7 @@
     <properties>
         <org.mapstruct.version>1.0.0.Final</org.mapstruct.version>
         <java.version>1.7</java.version>
+        <db.schema.file>compile/properties/default-schema.properties</db.schema.file>
     </properties>
     <profiles>
         <profile>
@@ -28,6 +29,9 @@
         </profile>
         <profile>
             <id>release</id>
+            <properties>
+                <db.schema.file>compile/properties/release-schema.properties</db.schema.file>
+            </properties>
             <build>
                 <resources>
                     <resource>
@@ -165,18 +169,50 @@
                     </dependency>
                 </dependencies>
             </plugin>
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <configuration>
-                        <skipTests>false</skipTests>
-                        <includes>
-                            <include>**/*Test.java</include>
-                        </includes>
-                        <excludedGroups>org.encos.lsa.test.category.DevTest</excludedGroups>
-                    </configuration>
-                </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <excludedGroups>org.encos.lsa.test.category.DevTest</excludedGroups>
+                </configuration>
+            </plugin>
+
+            <!--allows to filter java source code-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>templating-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <id>filter-src</id>
+                        <goals>
+                            <goal>filter-sources</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${basedir}/src/main/java-templates</sourceDirectory>
+                            <outputDirectory>${project.build.directory}/generated-sources/java-templates
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
+
+        <filters>
+            <filter>${db.schema.file}</filter>
+        </filters>
+        <resources>
+            <resource>
+                <!-- just to pretend its in the classpath (for the IDE) -->
+                <directory>src/main/java-templates</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
     </build>
 
 
